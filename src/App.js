@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react'
+import Tabs from './Components/Tabs';
 
 function App() {
+  const [currentTabs, setCurrentTabs] = useState([
+    {label: 'About', content: `I'm a former teacher training to be a software developer`},
+    {label: 'Skills', content: 'Customer experience, Project management, Team vision building'},
+    {label: 'Contact', content: 'Call me at 555-5555'}
+  ])
+  
+  const onChangeTabs = (newTabsObject) => {
+    setCurrentTabs(newTabsObject)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container col-6 mt-4'>
+      <Tabs currentTabsGroup={ currentTabs } changeTabsGroup={ onChangeTabs }/>
     </div>
   );
 }
